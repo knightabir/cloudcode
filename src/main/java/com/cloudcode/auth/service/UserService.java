@@ -1,6 +1,6 @@
-package com.cloudcode.service;
+package com.cloudcode.auth.service;
 
-import com.cloudcode.Model.User;
+import com.cloudcode.auth.Model.User;
 import org.springframework.data.crossstore.ChangeSetPersister;
 
 import java.util.List;

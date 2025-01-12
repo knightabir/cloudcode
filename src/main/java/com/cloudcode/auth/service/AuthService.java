@@ -1,8 +1,7 @@
 package com.cloudcode.auth.service;
 
-import com.cloudcode.Model.User;
+import com.cloudcode.auth.Model.User;
 import com.cloudcode.auth.Security.jwt.JwtUtils;
-import com.cloudcode.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -31,7 +30,6 @@ public class AuthService {
     }
 
     public ResponseEntity<String> refreshToken(String refreshToken) {
-        System.out.println(refreshToken);
         if (jwtUtil.validateToken(refreshToken)) {
 
             String newToken = jwtUtil.generateToken(jwtUtil.extractUsername(refreshToken));

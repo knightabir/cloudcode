@@ -1,7 +1,7 @@
-package com.cloudcode.service.impl;
+package com.cloudcode.auth.service.impl;
 
-import com.cloudcode.Model.User;
-import com.cloudcode.repository.UserRepository;
+import com.cloudcode.auth.Model.User;
+import com.cloudcode.auth.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,8 +1,8 @@
-package com.cloudcode.service.impl;
+package com.cloudcode.auth.service.impl;
 
-import com.cloudcode.Model.User;
-import com.cloudcode.repository.UserRepository;
-import com.cloudcode.service.UserService;
+import com.cloudcode.auth.Model.User;
+import com.cloudcode.auth.repository.UserRepository;
+import com.cloudcode.auth.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.security.crypto.password.PasswordEncoder;

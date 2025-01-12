@@ -1,7 +1,7 @@
 package com.cloudcode.auth.Security;
 
 import com.cloudcode.auth.Security.jwt.JwtFilter;
-import com.cloudcode.service.impl.UserDetailsServiceImpl;
+import com.cloudcode.auth.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,6 +37,7 @@ public class SpringSecurity {
                         .anyRequest().authenticated())
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+                .httpBasic(AbstractHttpConfigurer::disable)
                 .build();
     }
 

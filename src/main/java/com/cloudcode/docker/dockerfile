@@ -1,0 +1,14 @@
+FROM codercom/code-server:latest
+
+# Set environment variables
+ENV PASSWORD=admin
+ENV HOME=/home/coder
+
+# Create a workspace directory
+USER root
+RUN mkdir -p /workspace
+WORKDIR /workspace
+
+# Expose the VS Code port
+EXPOSE 8080
+CMD ["code-server", "--bind-addr", "0.0.0.0:8080", "/workspace"]

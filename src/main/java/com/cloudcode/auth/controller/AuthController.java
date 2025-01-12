@@ -1,9 +1,9 @@
 package com.cloudcode.auth.controller;
 
-import com.cloudcode.Model.User;
+import com.cloudcode.auth.Model.User;
 import com.cloudcode.auth.Security.jwt.JwtUtils;
 import com.cloudcode.auth.service.AuthService;
-import com.cloudcode.service.impl.UserServiceImpl;
+import com.cloudcode.auth.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,7 +50,6 @@ public class AuthController {
     @GetMapping("/logout")
     public ResponseEntity<?> logout() {
         try {
-            System.out.println(SecurityContextHolder.getContext());
             SecurityContextHolder.clearContext();
             return ResponseEntity.ok(Map.of("message", "Logged out successfully"));
         } catch (Exception e) {

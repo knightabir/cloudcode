@@ -1,4 +1,4 @@
-package com.cloudcode.Model;
+package com.cloudcode.auth.Model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
