@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  traefik:
+    image: traefik:v2.10
+    container_name: traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8000:8080" # Dashboard
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  app1:
+    image: ubuntu-vscode-filemanager
+    labels:
+      - "traefik.http.routers.app1.rule=Host(`app1.local`)"
+      - "traefik.http.services.app1.loadbalancer.server.port=8080"
+
+  app2:
+    image: ubuntu-vscode-filemanager
+    labels:
+      - "traefik.http.routers.app2.rule=Host(`app2.local`)"
+      - "traefik.http.services.app2.loadbalancer.server.port=8080"

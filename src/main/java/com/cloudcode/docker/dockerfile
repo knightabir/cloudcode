@@ -1,14 +1,31 @@
-FROM codercom/code-server:latest
+# Use Ubuntu as the base image
+FROM ubuntu:latest
 
-# Set environment variables
-ENV PASSWORD=admin
-ENV HOME=/home/coder
+# Set the maintainer
+LABEL maintainer="Abir Sarkar <your-email@example.com>"
 
-# Create a workspace directory
-USER root
-RUN mkdir -p /workspace
+# Update and install required packages
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    software-properties-common \
+    apt-transport-https \
+    gnupg \
+    unzip \
+    && apt-get clean
+
+# Install code-server (VS Code for web)
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+
+# Expose ports for VS Code
+EXPOSE 80
+
+# Create a working directory
 WORKDIR /workspace
 
-# Expose the VS Code port
-EXPOSE 8080
-CMD ["code-server", "--bind-addr", "0.0.0.0:8080", "/workspace"]
+# Set up entrypoints for code-server
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Default command
+CMD ["/entrypoint.sh"]
